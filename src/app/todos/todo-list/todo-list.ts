@@ -40,7 +40,11 @@ export class TodoList {
   }
 
   markAllCompleted () {
-    this.todos.forEach(todo => todo.completed = true);
+    this.todos.forEach(todo => {
+      if (todo.author === "Vikas Goyal") {
+        todo.completed = true;
+      }
+    });
 
   }
 }
