@@ -1,23 +1,23 @@
-import {Component, Input} from '@angular/core';
-import {TodoStore} from './../todo-store';
+import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
+import {TodoStore, Todo as TodoModel} from './../todo-store';
 
 @Component({
   selector: 'todo',
   templateUrl: './todo.html',
   styleUrls: ['./todo.css'],
-  providers: [TodoStore]
+  providers: [TodoStore],
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class Todo {
-  completed: Boolean;
   editing: Boolean;
-  @Input() title: string;
+  @Input() todo: TodoModel;
 
   constructor() {
 
   }
 
   toggleCompletion(todo: Todo) {
-    this.completed = !this.completed;
+    this.todo.completed = !this.todo.completed;
   }
 
   editTodo() {
@@ -28,11 +28,11 @@ export class Todo {
     this.editing = false;
   }
 
-  updateEditingTodo() {
-    this.title = this.title.trim();
+  updateEditingTodo(newTitle) {
     this.editing = false;
+    this.todo.title = newTitle;
 
-    if (this.title.length === 0) {
+    if (newTitle.length === 0) {
       //return this.todoStore.remove(todo);
     }
   }

@@ -242,6 +242,11 @@ footer {
   text-align: left;
 }
 
+.mark-all-completed {
+  float: right;
+  cursor: pointer;
+}
+
 /*
 	Hack to remove background from Mobile Safari.
 	Can't use it globally since it destroys checkboxes in Firefox

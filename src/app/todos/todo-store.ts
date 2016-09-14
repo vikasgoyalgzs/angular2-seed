@@ -1,6 +1,7 @@
 export class Todo {
   completed: Boolean;
   editing: Boolean;
+  author: String;
 
   private _title: String;
   get title() {
@@ -14,6 +15,7 @@ export class Todo {
     this.completed = false;
     this.editing = false;
     this.title = title.trim();
+    this.author = "Vikas Goyal";
   }
 }
 
@@ -71,8 +73,8 @@ export class TodoStore {
     this.updateStore();
   }
 
-  add(title: String) {
-    this.todos.push(new Todo(title));
+  add(todo: Todo) {
+    this.todos.push(todo);
     this.updateStore();
   }
 }

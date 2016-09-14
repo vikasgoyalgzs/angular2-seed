@@ -9,7 +9,7 @@ var webpackConfig = {
     'vendor':    './src/vendor.browser.ts',
     'main':       './src/main.browser.ts',
   },
-
+  debug: true,
   output: {
     path: './dist',
   },
@@ -33,7 +33,7 @@ var webpackConfig = {
 
 // Our Webpack Defaults
 var defaultConfig = {
-  devtool: 'cheap-module-source-map',
+  devtool: 'source-map',
   cache: true,
   debug: true,
   output: {

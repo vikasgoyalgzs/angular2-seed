@@ -9,10 +9,13 @@ import {TodoStore, Todo} from './../todo-store';
 })
 export class TodoList {
   todoStore: TodoStore;
-  newTodoText = '';
+  newTodo: Todo;
+  todos: Array<Todo>;
 
   constructor(todoStore: TodoStore) {
     this.todoStore = todoStore;
+    this.newTodo = new Todo('');
+    this.todos = this.todoStore.todos;
   }
 
 
@@ -20,13 +23,9 @@ export class TodoList {
     todo.editing = false;
   }
 
-
-
-
   removeCompleted() {
     this.todoStore.removeCompleted();
   }
-
 
 
   remove(todo: Todo){
@@ -34,9 +33,14 @@ export class TodoList {
   }
 
   addTodo() {
-    if (this.newTodoText.trim().length) {
-      this.todoStore.add(this.newTodoText);
-      this.newTodoText = '';
+    if (this.newTodo.title.trim().length) {
+      this.todoStore.add(this.newTodo);
+      this.newTodo = new Todo('');
     }
+  }
+
+  markAllCompleted () {
+    this.todos.forEach(todo => todo.completed = true);
+
   }
 }
