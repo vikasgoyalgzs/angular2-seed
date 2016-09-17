@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, AfterViewChecked} from '@angular/core';
 import {TodoStore, Todo as TodoModel} from './../todo-store';
 
 @Component({
@@ -7,7 +7,7 @@ import {TodoStore, Todo as TodoModel} from './../todo-store';
   styleUrls: ['./todo.css'],
   providers: [TodoStore]
 })
-export class Todo {
+export class Todo implements AfterViewChecked {
   editing: Boolean;
   @Input() todo: TodoModel;
 
@@ -34,5 +34,9 @@ export class Todo {
     if (newTitle.length === 0) {
       //return this.todoStore.remove(todo);
     }
+  }
+
+  ngAfterViewChecked () {
+    console.log('todos checked');
   }
 }
