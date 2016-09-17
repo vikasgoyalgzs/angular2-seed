@@ -5,4 +5,13 @@ import {Component} from '@angular/core';
   templateUrl: './app.html',
 })
 export class AppComponent {
+  isLoading = false;
+
+  ngAfterViewInit() {
+    setTimeout(() => this.load());
+  }
+
+  load() {
+    this.isLoading = true;
+  }
 }
