@@ -47,10 +47,18 @@ export class TodoList {
   }
 
   markAllCompleted () {
-    this.todos.forEach(todo => {
+    var filtedIdx = [];
+    this.todos.forEach((todo, i) => {
       if (todo.author === "Vikas Goyal") {
-        todo.completed = true;
+        filtedIdx.push(i);
       }
+    });
+    filtedIdx.forEach(i => {
+      let todo = this.todos[i];
+      let newToDo = new Todo('');
+      todo.completed = true;
+      this.todos.splice(i, 1);
+      this.todos.splice(i, 0, Object.assign(newToDo, todo))
     });
 
   }
