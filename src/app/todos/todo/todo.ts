@@ -1,11 +1,12 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
 import {TodoStore, Todo as TodoModel} from './../todo-store';
 
 @Component({
   selector: 'todo',
   templateUrl: './todo.html',
   styleUrls: ['./todo.css'],
-  providers: [TodoStore]
+  providers: [TodoStore],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Todo {
   editing: Boolean;
