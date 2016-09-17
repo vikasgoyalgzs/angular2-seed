@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Http} from '@angular/http';
 import {TodoStore, Todo} from './../todo-store';
 
 @Component({
@@ -11,8 +12,10 @@ export class TodoList {
   todoStore: TodoStore;
   newTodo: Todo;
   todos: Array<Todo>;
+  http: Http;
 
-  constructor(todoStore: TodoStore) {
+  constructor(todoStore: TodoStore, http: Http) {
+    this.http = http;
     this.todoStore = todoStore;
     this.newTodo = new Todo('');
     this.todos = this.todoStore.todos;
@@ -37,6 +40,10 @@ export class TodoList {
       this.todoStore.add(this.newTodo);
       this.newTodo = new Todo('');
     }
+  }
+
+  import () {
+    this.http.get('app/todos/todos.json').subscribe(res => this.todos.push(...res.json()))
   }
 
   markAllCompleted () {

@@ -126,6 +126,8 @@ label[for='toggle-all'] {
   margin: 0;
   padding: 0;
   list-style: none;
+  overflow: auto;
+  height: 400px;
 }
 
 
@@ -191,6 +193,10 @@ label[for='toggle-all'] {
 
 #filters li a.selected {
   border-color: rgba(175, 47, 47, 0.2);
+}
+
+.clear-completed {
+  cursor: pointer;
 }
 
 #clear-completed,
