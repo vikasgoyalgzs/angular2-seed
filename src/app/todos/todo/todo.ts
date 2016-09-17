@@ -1,4 +1,4 @@
-import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
+import {Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, AfterViewInit} from '@angular/core';
 import {TodoStore, Todo as TodoModel} from './../todo-store';
 
 @Component({
@@ -6,14 +6,15 @@ import {TodoStore, Todo as TodoModel} from './../todo-store';
   templateUrl: './todo.html',
   styleUrls: ['./todo.css'],
   providers: [TodoStore],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.Default
 })
-export class Todo {
+export class Todo implements AfterViewInit {
   editing: Boolean;
   @Input() todo: TodoModel;
+  cd: ChangeDetectorRef;
 
-  constructor() {
-
+  constructor(cd: ChangeDetectorRef) {
+    this.cd = cd;
   }
 
   toggleCompletion(todo: Todo) {
@@ -35,5 +36,12 @@ export class Todo {
     if (newTitle.length === 0) {
       //return this.todoStore.remove(todo);
     }
+  }
+
+  ngAfterViewInit () {
+    // this.cd.detach();
+    // setInterval(() => {
+    //   this.cd.detectChanges();
+    // }, 1000);
   }
 }

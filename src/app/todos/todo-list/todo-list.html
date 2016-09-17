@@ -12,6 +12,7 @@
   <footer class="footer" *ngIf="todoStore.todos.length > 0">
     <span class="todo-count"><strong>{{todoStore.getRemaining().length}}</strong> {{todoStore.getRemaining().length == 1 ? 'item' : 'items'}} left</span>
     <button class="clear-completed" (click)="import()">Import</button>
+    <button class="clear-completed" (click)="stream()">| Stream</button>
     <button class="mark-all-completed" (click)="markAllCompleted()">Mark all my todos completed</button>
   </footer>
 </section>

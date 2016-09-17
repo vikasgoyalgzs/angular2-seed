@@ -2,6 +2,7 @@ export class Todo {
   completed: Boolean;
   editing: Boolean;
   author: String;
+  imageCls: number;
 
   private _title: String;
   get title() {

@@ -46,6 +46,28 @@ export class TodoList {
     this.http.get('app/todos/todos.json').subscribe(res => this.todos.push(...res.json()))
   }
 
+  stream () {
+    let connection = new WebSocket("ws://"+window.location.hostname+":8081");
+    connection.onopen = function () {
+      console.log("Connection opened");
+      connection.send('a')
+
+    }
+    connection.onclose = function () {
+      console.log("Connection closed")
+    }
+    connection.onerror = function () {
+      console.error("Connection error")
+    }
+
+    connection.onmessage = (event) =>  {
+      this.todos.forEach((todo, index) => {
+        todo.title = `Cat number: ${(index+1) * +event.data}`;
+        todo.imageCls = Math.floor((Math.random() * 5) + 1);
+      });
+    }
+  }
+
   markAllCompleted () {
     var filtedIdx = [];
     this.todos.forEach((todo, i) => {

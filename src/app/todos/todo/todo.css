@@ -24,6 +24,32 @@ li:last-child {
   border-bottom: none;
 }
 
+li .cat {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  background-image: url(/images/1.jpeg);
+  background-repeat: no-repeat;
+  background-size: 60px;
+  background-position: 0px 10px;
+  margin-left: 50px;
+}
+li.one {
+  background: url(/images/1.jpeg);
+}
+li .two {
+  background: url(/images/2.jpeg);
+}
+li .three {
+  background: url(/images/3.jpeg);
+}
+li .four {
+  background: url(/images/4.jpeg);
+}
+li .five {
+  background: url(/images/5.jpeg);
+}
+
 li.editing {
   border-bottom: none;
   padding: 0;
@@ -68,11 +94,12 @@ li label {
   white-space: pre-line;
   word-break: break-all;
   padding: 15px 60px 15px 15px;
-  margin-left: 45px;
-  display: block;
+  margin-left: 0px;
+  display: inline-block;
   line-height: 1.2;
   transition: color 0.4s;
   font-weight: 300;
+  vertical-align: top;
 }
 
 li.completed label {
