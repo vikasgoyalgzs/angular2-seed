@@ -7,7 +7,7 @@ var server = ws.createServer(function (conn) {
     setInterval(function () {
       conn.sendText(" " + i);
       i++;
-    }, 100);
+    }, 10);
   });
   conn.on("close", function (code, reason) {
     console.log("Connection closed")
